@@ -77,9 +77,9 @@ OK
 > get hello
 "world"
 > del hello
-(integer) 1
+(integer) 1    //返回结果为 (integer) 1 时，这通常表示该操作已成功执行，并且返回的是一个整数值 1。(integer) 表示返回值是一个整数类型的数据。
 > get hello
-(nil)
+(nil)         //返回结果为 (nil) 时，这通常表示未找到与你的请求相关联的数据或者键，并且没有返回任何结果。
 ```
 
 ### LIST
@@ -90,7 +90,7 @@ OK
 > rpush list-key item
 (integer) 1
 > rpush list-key item2
-(integer) 2
+(integer) 2                  //表示成功添加两个
 > rpush list-key item
 (integer) 3
 
@@ -129,12 +129,12 @@ OK
 2) "item2"
 3) "item3"
 
-> sismember set-key item4
+> sismember set-key item4        //检查给定的成员元素是否存在于集合（Set）中
 (integer) 0
 > sismember set-key item
 (integer) 1
 
-> srem set-key item2
+> srem set-key item2            //SREM 命令用于从集合（Set）中移除一个或多个指定的成员元素. 例如:SREM key a b c
 (integer) 1
 > srem set-key item2
 (integer) 0
@@ -187,7 +187,7 @@ OK
 > zadd zset-key 982 member0
 (integer) 0
 
-> zrange zset-key 0 -1 withscores
+> zrange zset-key 0 -1 withscores         //ZRANGEBYSCORE 命令用于按照分数（Score）的范围获取有序集合（Sorted Set）中的成员元素。WITHSCORES 是一个可选参数，如果使用该参数，命令会同时返回成员元素和对应的分数。如果不使用该参数，则只会返回成员元素而不返回对应的分数。
 1) "member1"
 2) "728"
 3) "member0"
@@ -202,7 +202,7 @@ OK
 > zrem zset-key member1
 (integer) 0
 
-> zrange zset-key 0 -1 withscores
+> zrange zset-key 0 -1 withscores     //用于获取有序集合（Sorted Set）中指定索引范围内的成员元素。
 1) "member0"
 2) "982"
 ```
